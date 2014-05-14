@@ -1,54 +1,64 @@
 %define major 0
-%define libname %mklibname lxqt-mount %{major}
-%define devname %mklibname lxqt-mount -d
+%define libname %mklibname lxqtmount %{major}
+%define devname %mklibname lxqtmount -d
 
-Name: liblxqt-mount
-Version: 0.7.0
-Release: 1
-Source0: http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Summary: Mounting related libraries for the LXQt desktop
-URL: http://lxqt.org/
-License: GPL
-Group: System/Libraries
-BuildRequires: pkgconfig(qtxdg)
-BuildRequires: cmake
-BuildRequires: cmake(lxqt)
-BuildRequires: qt4-devel
-Requires: %{libname} = %{EVRD}
+Summary:	Mounting related libraries for the LXQt desktop
+Name:		liblxqt-mount
+Version:	0.7.0
+Release:	2
+License:	LGPLv2.1+
+Group:		System/Libraries
+Url:		http://lxqt.org/
+Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
+BuildRequires:	cmake
+BuildRequires:	qt4-devel
+BuildRequires:	pkgconfig(lxqt)
+BuildRequires:	pkgconfig(qtxdg)
 
 %description
-Mounting related libraries for the LXQt desktop
+Mounting related libraries for the LXQt desktop.
+
+#----------------------------------------------------------------------------
 
 %package -n %{libname}
-Summary: Mounting related libraries for the LXQt desktop
-Group: System/Libraries
+Summary:	Mounting related libraries for the LXQt desktop
+Group:		System/Libraries
+Conflicts:	%{_lib}lxqt-mount0 < 0.7.0-2
+Obsoletes:	%{_lib}lxqt-mount0 < 0.7.0-2
 
 %description -n %{libname}
-Mounting related libraries for the LXQt desktop
+Mounting related libraries for the LXQt desktop.
+
+%files -n %{libname}
+%{_libdir}/liblxqtmount.so.%{major}*
+
+#----------------------------------------------------------------------------
 
 %package -n %{devname}
-Summary: Development files for %{name}
-Group: Development/C
-Requires: %{libname} = %{EVRD}
+Summary:	Development files for %{name}
+Group:		Development/C++
+Requires:	%{libname} = %{EVRD}
+Conflicts:	%{_lib}lxqt-mount-devel < 0.7.0-2
+Obsoletes:	%{_lib}lxqt-mount-devel < 0.7.0-2
 
 %description -n %{devname}
-Development files (Headers etc.) for %{name}.
+Development files (headers etc.) for %{name}.
+
+%files -n %{devname}
+%{_includedir}/*
+%{_libdir}/liblxqtmount.so
+%{_libdir}/pkgconfig/*.pc
+%{_datadir}/cmake/lxqtmount
+
+#----------------------------------------------------------------------------
 
 %prep
 %setup -q -c %{name}-%{version}
-%cmake
 
 %build
-%make -C build
+%cmake
+%make
 
 %install
 %makeinstall_std -C build
 
-%files -n %{libname}
-%{_libdir}/*.so.%{major}*
-
-%files -n %{devname}
-%{_includedir}/*
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*
-%{_datadir}/cmake/lxqtmount
