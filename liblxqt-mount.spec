@@ -5,7 +5,7 @@
 Summary:	Mounting related libraries for the LXQt desktop
 Name:		liblxqt-mount
 Version:	0.7.0
-Release:	2
+Release:	3
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
