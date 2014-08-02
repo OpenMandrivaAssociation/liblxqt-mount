@@ -22,6 +22,8 @@ BuildRequires:	cmake
 BuildRequires:	qt5-devel
 BuildRequires:	pkgconfig(lxqt-qt5)
 BuildRequires:	pkgconfig(Qt5Xdg)
+BuildRequires:	cmake(Qt5LinguistTools)
+BuildRequires:	cmake(Qt5X11Extras)
 
 %description
 Mounting related libraries for the LXQt desktop.
