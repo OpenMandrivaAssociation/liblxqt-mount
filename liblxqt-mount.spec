@@ -3,12 +3,12 @@
 %define devname %mklibname lxqtmount-qt5 -d
 %define qt4libname %mklibname lxqtmount %{major}
 %define qt4devname %mklibname lxqtmount -d
-%define scm 20140730
+%define scm %nil
 
 Summary:	Mounting related libraries for the LXQt desktop
 Name:		liblxqt-mount
 Version:	0.8.0
-%if %scm
+%if "%scm" != ""
 Source0:	%{name}-%{scm}.tar.xz
 Release:	0.%scm.1
 %else
@@ -65,10 +65,10 @@ Development files (headers etc.) for %{name}.
 #----------------------------------------------------------------------------
 
 %prep
-%if %scm
+%if "%scm" != ""
 %setup -q -n %{name}
 %else
-%setup -q -c %{name}-%{version}
+%setup -q -n %{name}-%{version}
 %endif
 
 %build
