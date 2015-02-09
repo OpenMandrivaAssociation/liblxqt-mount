@@ -60,7 +60,6 @@ Development files (headers etc.) for %{name}.
 %{_includedir}/*
 %{_libdir}/liblxqtmount.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/cmake/lxqtmount
 %{_libdir}/cmake/lxqtmount/*.cmake
 
 #----------------------------------------------------------------------------
