@@ -1,8 +1,6 @@
 %define major 0
-%define libname %mklibname lxqtmount-qt5 %{major}
-%define devname %mklibname lxqtmount-qt5 -d
-%define qt4libname %mklibname lxqtmount %{major}
-%define qt4devname %mklibname lxqtmount -d
+%define libname %mklibname lxqtmount %{major}
+%define devname %mklibname lxqtmount -d
 %define scm %nil
 
 Summary:	Mounting related libraries for the LXQt desktop
@@ -20,7 +18,7 @@ Group:		System/Libraries
 Url:		http://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	qt5-devel
-BuildRequires:	pkgconfig(lxqt-qt5)
+BuildRequires:	pkgconfig(lxqt)
 BuildRequires:	pkgconfig(Qt5Xdg)
 BuildRequires:	cmake(Qt5LinguistTools)
 BuildRequires:	cmake(Qt5X11Extras)
@@ -35,13 +33,14 @@ Summary:	Mounting related libraries for the LXQt desktop
 Group:		System/Libraries
 Conflicts:	%{_lib}lxqt-mount0 < 0.7.0-2
 Obsoletes:	%{_lib}lxqt-mount0 < 0.7.0-2
-%rename	%{qt4libname}
+Conflicts:	%{_lib}lxqtmount-qt5_0 < 0.9.0
+%rename		%{_lib}lxqtmount-qt5_0
 
 %description -n %{libname}
 Mounting related libraries for the LXQt desktop.
 
 %files -n %{libname}
-%{_libdir}/liblxqtmount-qt5.so.%{major}*
+%{_libdir}/liblxqtmount.so.%{major}*
 
 #----------------------------------------------------------------------------
 
@@ -51,16 +50,16 @@ Group:		Development/C++
 Requires:	%{libname} = %{EVRD}
 Conflicts:	%{_lib}lxqt-mount-devel < 0.7.0-2
 Obsoletes:	%{_lib}lxqt-mount-devel < 0.7.0-2
-%rename	%{qt4devname}
+%rename		%{_lib}lxqtmount-qt5-devel
 
 %description -n %{devname}
 Development files (headers etc.) for %{name}.
 
 %files -n %{devname}
 %{_includedir}/*
-%{_libdir}/liblxqtmount-qt5.so
+%{_libdir}/liblxqtmount.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/cmake/lxqtmount-qt5
+%{_datadir}/cmake/lxqtmount
 
 #----------------------------------------------------------------------------
 
