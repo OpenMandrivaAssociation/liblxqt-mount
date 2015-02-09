@@ -56,10 +56,12 @@ Obsoletes:	%{_lib}lxqt-mount-devel < 0.7.0-2
 Development files (headers etc.) for %{name}.
 
 %files -n %{devname}
+%dir %{_libdir}/cmake/lxqtmount
 %{_includedir}/*
 %{_libdir}/liblxqtmount.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/cmake/lxqtmount
+%{_libdir}/cmake/lxqtmount/*.cmake
 
 #----------------------------------------------------------------------------
 
