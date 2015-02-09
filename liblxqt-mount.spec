@@ -7,13 +7,13 @@
 
 Summary:	Mounting related libraries for the LXQt desktop
 Name:		liblxqt-mount
-Version:	0.8.0
+Version:	0.9.0
 %if "%scm" != ""
 Source0:	%{name}-%{scm}.tar.xz
 Release:	0.%scm.1
 %else
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	2
+Release:	1
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
