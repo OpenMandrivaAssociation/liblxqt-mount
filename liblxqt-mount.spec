@@ -11,17 +11,17 @@ Source0:	%{name}-%{scm}.tar.xz
 Release:	0.%scm.1
 %else
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	1
+Release:	2
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
 Url:		http://lxqt.org/
 BuildRequires:	cmake
-BuildRequires:	qt5-devel
-BuildRequires:	pkgconfig(lxqt)
-BuildRequires:	pkgconfig(Qt5Xdg)
+BuildRequires:	qmake5
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5Gui)
+BuildRequires:	cmake(Qt5DBus)
 BuildRequires:	cmake(Qt5LinguistTools)
-BuildRequires:	cmake(Qt5X11Extras)
 
 %description
 Mounting related libraries for the LXQt desktop.
@@ -72,7 +72,7 @@ Development files (headers etc.) for %{name}.
 %endif
 
 %build
-%cmake -DUSE_QT5:BOOL=ON
+%cmake_qt5
 %make
 
 %install
