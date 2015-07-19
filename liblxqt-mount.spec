@@ -11,7 +11,7 @@ Source0:	%{name}-%{scm}.tar.xz
 Release:	0.%scm.1
 %else
 Source0:	http://lxqt.org/downloads/lxqt/%{version}/%{name}-%{version}.tar.xz
-Release:	2
+Release:	3
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
