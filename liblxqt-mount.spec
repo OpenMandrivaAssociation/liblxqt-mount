@@ -15,7 +15,7 @@ Release:	3
 %endif
 License:	LGPLv2.1+
 Group:		System/Libraries
-Url:		http://lxqt.org/
+Url:		https://lxqt.org/
 BuildRequires:	cmake
 BuildRequires:	qmake5
 BuildRequires:	cmake(Qt5Core)
